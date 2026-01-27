@@ -1,0 +1,7 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://wealthy-international-goldfinch-501pbm.teleporthq.app/sitemap.xml
