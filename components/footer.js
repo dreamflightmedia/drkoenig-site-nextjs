@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Script from 'dangerous-html/react'
 import { useTranslations } from 'next-intl'
 
 const Footer = (props) => {
@@ -249,16 +248,15 @@ const Footer = (props) => {
         </footer>
         <div className="footer-container2">
           <div className="footer-container3">
-            <Script
-              html={`<script defer data-name="footer-newsletter">
+     <div
+  dangerouslySetInnerHTML={{
+    __html: `<script defer data-name="footer-newsletter">
 (function(){
   const newsletterForm = document.getElementById("newsletter-form")
   const feedbackEl = document.getElementById("form-feedback")
 
   if (newsletterForm) {
     newsletterForm.addEventListener("submit", function (e) {
-      // We allow native submission but provide visual feedback
-      // In a real production environment, this might be intercepted or handled by the action URL
 
       const emailInput = newsletterForm.querySelector('input[type="email"]')
 
@@ -266,29 +264,28 @@ const Footer = (props) => {
         feedbackEl.textContent = "Authenticating subscription..."
         feedbackEl.style.color = "var(--color-primary)"
 
-        // Simulating the transition to success state after native POST would occur
         setTimeout(() => {
           feedbackEl.textContent = "Subscription confirmed. Welcome to the Axiom Report."
-          feedbackEl.style.color = "#2ecc71" // Success green
+          feedbackEl.style.color = "#2ecc71"
           emailInput.value = ""
         }, 1000)
       }
     })
 
-    // Real-time validation feedback
     const emailInput = newsletterForm.querySelector('input[type="email"]')
     emailInput.addEventListener("blur", function () {
       if (this.value && !this.checkValidity()) {
         feedbackEl.textContent = "Please provide a valid intellectual correspondence address."
-        feedbackEl.style.color = "#e74c3c" // Error red
+        feedbackEl.style.color = "#e74c3c"
       } else {
         feedbackEl.textContent = ""
       }
     })
   }
 })()
-</script>`}
-            ></Script>
+</script>`
+  }}
+/>
           </div>
         </div>
       </div>

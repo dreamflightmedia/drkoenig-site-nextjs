@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 
-import Script from 'dangerous-html/react'
 import { useTranslations } from 'next-intl'
 
 import Navigation from '../components/navigation'
@@ -595,20 +594,23 @@ const Home = (props) => {
         </section>
         <div className="home-container2">
           <div className="home-container3">
-            <Script
-              html={`<style>
+            <div
+  dangerouslySetInnerHTML={{
+    __html: `<style>
 section {
   padding: var(--spacing-3xl) 0;
   overflow: hidden;
 }
-</style>`}
-            ></Script>
+</style>`
+  }}
+/>
           </div>
         </div>
         <div className="home-container4">
           <div className="home-container5">
-            <Script
-              html={`<script defer data-name="hero-scroll">
+            <div
+  dangerouslySetInnerHTML={{
+    __html: `<script defer data-name="hero-scroll">
 (function(){
   const heroImage = document.querySelector(".hero-image")
 
@@ -640,8 +642,9 @@ section {
     observer.observe(card)
   })
 })()
-</script>`}
-            ></Script>
+</script>`
+  }}
+/>
           </div>
         </div>
         <Footer></Footer>

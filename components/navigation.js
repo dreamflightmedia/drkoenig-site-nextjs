@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Script from 'dangerous-html/react'
 import { useTranslations } from 'next-intl'
 
 const Navigation = (props) => {
@@ -147,8 +146,9 @@ const Navigation = (props) => {
         </div>
         <div className="navigation-container2">
           <div className="navigation-container3">
-            <Script
-              html={`<script defer data-name="navigation-logic">
+            <div
+  dangerouslySetInnerHTML={{
+    __html: `<script defer data-name="navigation-logic">
 (function(){
   const navOpenBtn = document.getElementById("navigationMobileOpen")
   const navCloseBtn = document.getElementById("navigationMobileClose")
@@ -182,8 +182,9 @@ const Navigation = (props) => {
     }
   })
 })()
-</script>`}
-            ></Script>
+</script>`
+  }}
+/>
           </div>
         </div>
       </div>
